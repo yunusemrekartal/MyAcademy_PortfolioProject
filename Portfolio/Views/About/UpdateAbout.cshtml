@@ -1,0 +1,18 @@
+﻿@model About
+@{
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Hakkımda Güncelleme Sayfası";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="Id" required/>
+    <label asp-for="Title">Başlık</label>
+    <input class="form-control" asp-for="Title" type="text" required />
+    <br />
+    <label asp-for="Description">Açıklama</label>
+    <textarea class="form-control" asp-for="Description" rows="5"></textarea>
+    <br />
+    <label asp-for="ImageUrl">Görsel Url</label>
+    <input class="form-control" asp-for="ImageUrl" type="text" required />
+    <button class="btn btn-outline-dark">Güncelle</button>
+</form>

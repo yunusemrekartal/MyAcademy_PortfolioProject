@@ -1,4 +1,4 @@
-﻿@model List<ProjectTechStack>
+﻿@model List<Portfolio.Models.ProjectTechStackViewModel>
 @{
     ViewData["Title"] = "Proje Teknolojileri";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
@@ -16,8 +16,8 @@
         count++;
         <tr>
             <td>@count</td>
-            <td>@ptc.Project.Name</td>
-            <td>@ptc.TechStack.Name</td>
+            <td>@ptc.ProjectName</td>
+            <td>@ptc.TechStacks</td>
         </tr>
     }
 </table>

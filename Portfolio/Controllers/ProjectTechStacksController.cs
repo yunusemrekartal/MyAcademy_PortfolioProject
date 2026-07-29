@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Data.Context;
 using Portfolio.Data.Entities;
+using Portfolio.Models;
 
 namespace Portfolio.Controllers
 {
@@ -15,7 +16,11 @@ namespace Portfolio.Controllers
         }
         public IActionResult Index()
         {
-            var projectTechStack = _context.ProjectTechStacks.Include(x => x.Project).Include(y=>y.TechStack).ToList();
+            var projectTechStack = _context.Projects.Select(p => new ProjectTechStackViewModel
+            {
+                ProjectName = p.Name,
+                TechStacks = string.Join(", ", p.ProjectTechStacks.Select(pts => pts.TechStack.Name))
+            }).ToList();
             return View(projectTechStack);
         }
         [HttpGet]

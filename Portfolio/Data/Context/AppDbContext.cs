@@ -10,6 +10,7 @@ namespace Portfolio.Data.Context
             optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS;database=PortfolioDb;integrated security=true;trustServerCertificate=true");
         }
         public DbSet<About> Abouts { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<ContactInfo> ContactInfos { get; set; }
         public DbSet<Education> Educations { get; set; }
@@ -19,6 +20,7 @@ namespace Portfolio.Data.Context
         public DbSet<Skill> Skills { get; set; }
         public DbSet<TechStack> TechStacks { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<UserMessage> UserMessages { get; set; }
 
     }
 }

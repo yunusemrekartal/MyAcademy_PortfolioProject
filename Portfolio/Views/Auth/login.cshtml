@@ -8,24 +8,57 @@
     <meta name="viewport" content="width=device-width">
     <title>Login</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="container">
-        <div class="col-8 text-center card">
-            <h4 class="card-title">Giriş Formu</h4>
-            <div class="card-body">
-                <form method="post">
-                    <label>Kullanıcı Adı</label>
-                    <input type="text" asp-for="UserName" class="form-control" />
-                    <span class="text-danger" asp-validation-for="UserName"></span>
-                    <br />
-                    <label>Şifre</label>
-                    <input type="password" asp-for="Password" class="form-control" />
-                    <span class="text-danger" asp-validation-for="Password"></span>
-                    <br />
-                    <button class="btn btn-outline-dark">Giriş Yap</button>
-                    <span class="text-danger">@Html.ValidationSummary(excludePropertyErrors:true)</span>
-                </form>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card shadow-lg border-0 rounded-4 p-4">
+                <div class="card-body">
+
+                    <!-- Başlık Kısmı -->
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                            <i class="fa-solid fa-lock fs-5"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark">Hoş Geldiniz</h3>
+                        <p class="text-muted small">Devam etmek için lütfen giriş yapın</p>
+                    </div>
+
+                    <!-- Form Başlangıcı -->
+                    <form method="post">
+                        <!-- Kullanıcı Adı -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary small" asp-for="UserName">Kullanıcı Adı</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-user text-muted"></i></span>
+                                <input type="text" asp-for="UserName" class="form-control bg-light border-start-0 ps-0 shadow-none" placeholder="Kullanıcı adınızı girin" />
+                            </div>
+                            <span class="text-danger small mt-1 d-block" asp-validation-for="UserName"></span>
+                        </div>
+
+                        <!-- Şifre -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary small" asp-for="Password">Şifre</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-key text-muted"></i></span>
+                                <input type="password" asp-for="Password" class="form-control bg-light border-start-0 ps-0 shadow-none" placeholder="••••••••" />
+                            </div>
+                            <span class="text-danger small mt-1 d-block" asp-validation-for="Password"></span>
+                        </div>
+
+                        <!-- Validation Summary -->
+                        <div class="mb-3">
+                            <span class="text-danger small">@Html.ValidationSummary(excludePropertyErrors: true)</span>
+                        </div>
+
+                        <!-- Giriş Butonu -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-dark py-2 fw-semibold shadow-sm">Giriş Yap</button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>

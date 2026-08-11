@@ -1,0 +1,20 @@
+﻿@model Banner
+@{
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Banner Ekle";
+}
+<form method="post">
+    <label asp-for="ImageUrl">Resim URL</label>
+    <input class="form-control" asp-for="ImageUrl" type="text" />
+    <span class="text-danger" asp-validation-for="ImageUrl"></span>
+    <br />
+    <label asp-for="Title"></label>
+    <input class="form-control" asp-for="Title" type="text"/>
+    <span class="text-danger" asp-validation-for="Title"></span>
+    <br />
+    <label asp-for="Description">Açıklama</label>
+    <input class="form-control" asp-for="Description" type="text"/>
+    <span class="text-danger" asp-validation-for="Description"></span>
+    <br />
+    <button class="btn btn-outline-dark">Oluştur</button>
+</form>

@@ -48,11 +48,13 @@ namespace Portfolio.Controllers
             };
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
             HttpContext.Session.SetString("fullName", admin.FullName);
-            return RedirectToAction("Index", "About");
+            return RedirectToAction("Index", "DashBoard");
         }
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-
+            HttpContext.Session.Remove("fullName");
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Default");
         }
     }
 }

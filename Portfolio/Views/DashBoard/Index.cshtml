@@ -1,0 +1,112 @@
+﻿@model AdminDashboardViewModel
+@{
+    Layout = "/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Kontrol Paneli";
+}
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+    <!-- Stat Card 1 -->
+    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg custom-shadow flex items-center justify-between">
+        <div>
+            <p class="text-on-surface-variant font-label-sm uppercase mb-xs">
+                Toplam Proje
+            </p>
+            <h3 class="font-display-sm text-display-sm text-on-surface">
+                @Model.TotalProjects
+            </h3>
+        </div>
+        <div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-[32px]">folder</span>
+        </div>
+    </div>
+    <!-- Stat Card 2 -->
+    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg custom-shadow flex items-center justify-between">
+        <div>
+            <p class="text-on-surface-variant font-label-sm uppercase mb-xs">
+                Tüm Mesajlar
+            </p>
+            <h3 class="font-display-sm text-display-sm text-on-surface">
+                @Model.TotalMessages
+            </h3>
+        </div>
+        <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
+            <span class="material-symbols-outlined text-emerald-600 text-[32px]">mail</span>
+        </div>
+    </div>
+    <!-- Stat Card 3 -->
+    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg custom-shadow flex items-center justify-between">
+        <div>
+            <p class="text-on-surface-variant font-label-sm uppercase mb-xs">
+                Okunmamış Mesajlar
+            </p>
+            <h3 class="font-display-sm text-display-sm text-on-surface">
+                @Model.UnreadMessagesCount
+            </h3>
+        </div>
+        <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+            <span class="material-symbols-outlined text-amber-600 text-[32px]">mark_email_unread</span>
+        </div>
+    </div>
+    <!-- Stat Card 4 -->
+    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg custom-shadow flex items-center justify-between">
+        <div>
+            <p class="text-on-surface-variant font-label-sm uppercase mb-xs">
+                Deneyimler
+            </p>
+            <h3 class="font-display-sm text-display-sm text-on-surface">
+                @Model.Testimonials
+            </h3>
+        </div>
+        <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+            <span class="material-symbols-outlined text-amber-600 text-[32px]">work</span>
+        </div>
+    </div>
+</div>
+<br />
+<!-- recent projects-->
+<section class="col-span-12 lg:col-span-8">
+    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl custom-shadow overflow-hidden">
+        <div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+            <h3 class="font-h3 text-h3 text-on-surface">Son Projeler</h3>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-surface-container text-on-surface-variant border-b border-outline-variant">
+                        <th class="px-lg py-md font-label-sm uppercase tracking-wider">
+                            Proje Adı
+                        </th>
+                        <th class="px-lg py-md font-label-sm uppercase tracking-wider">
+                            Açıklama
+                        </th>
+                        <th class="px-lg py-md font-label-sm uppercase tracking-wider">
+                            GitHub
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-outline-variant/30">
+                    @foreach (var prj in ViewBag.projects)
+                    {
+                        <tr class="hover:bg-surface-container-lowest/50 transition-colors">
+                            <td class="px-lg py-md">
+                                <div class="flex items-center gap-md">
+                                    <img class="w-10 h-10 rounded-lg object-cover border border-outline-variant" src="@prj.ImageUrl">
+                                    <span class="font-label-md text-on-surface">@prj.Name</span>
+                                </div>
+                            </td>
+                            <td class="px-lg py-md text-on-surface-variant">
+                                @prj.Description
+                            </td>
+                            <td class="px-lg py-md">
+                                <a href="@prj.GithubUrl" target="_blank" class="btn btn-dark d-inline-flex align-items-center gap-2 shadow-sm">
+                                    <i class="fa-brands fa-github fs-5"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,32 @@
+﻿@model Education
+@{
+    Layout="~/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Eğitim Ekle";
+}
+<form method="post">
+    <label asp-for="SchoolName">Okul Adı</label>
+    <input class="form-control" type="text" asp-for="SchoolName"/>
+    <span class="text-danger" asp-validation-for="SchoolName"></span>
+    <br />
+    <label asp-for="Department">Bölüm</label>
+    <input class="form-control" type="text" asp-for="Department" />
+    <span class="text-danger" asp-validation-for="Department"></span>
+    <br />
+    <label asp-for="GPA">GANO</label>
+    <input class="form-control" type="text" asp-for="GPA" />
+    <span class="text-danger" asp-validation-for="GPA"></span>
+    <br />
+    <label asp-for="StartYear">Başlangıç Yılı</label>
+    <input class="form-control" type="text" asp-for="StartYear" />
+    <span class="text-danger" asp-validation-for="StartYear"></span>
+    <br />
+    <label asp-for="GraduationYear">Mezun Yılı</label>
+    <input class="form-control" type="text" asp-for="GraduationYear" />
+    <span class="text-danger" asp-validation-for="GraduationYear"></span>
+    <br />
+    <label asp-for="Description">Açıklama</label>
+    <input class="form-control" type="text" asp-for="Description" />
+    <span class="text-danger" asp-validation-for="Description"></span>
+    <br />
+    <button class="btn btn-outline-dark">Oluştur</button>
+</form>

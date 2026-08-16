@@ -1,0 +1,28 @@
+﻿@model Experience
+@{
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Deneyim Güncelle";
+}
+<form method="post">
+    <label asp-for="Title">Başlık</label>
+    <input class="form-control" type="text" asp-for="Title" />
+    <span class="text-danger" asp-validation-for="Title"></span>
+    <br />
+    <label asp-for="Description">Açıklama</label>
+    <input class="form-control" type="text" asp-for="Description" />
+    <span class="text-danger" asp-validation-for="Description"></span>
+    <br />
+    <label asp-for="Company">Şirket</label>
+    <input class="form-control" type="text" asp-for="Company" />
+    <span class="text-danger" asp-validation-for="Company"></span>
+    <br />
+    <label asp-for="StartYear">Başlangıç Yılı</label>
+    <input class="form-control" type="text" asp-for="StartYear" />
+    <span class="text-danger" asp-validation-for="StartYear"></span>
+    <br />
+    <label asp-for="EndYear">Bitiş Yılı</label>
+    <input class="form-control" type="text" asp-for="EndYear" />
+    <span class="text-danger" asp-validation-for="EndYear"></span>
+    <br />
+    <button class="btn btn-outline-dark">Oluştur</button>
+</form>

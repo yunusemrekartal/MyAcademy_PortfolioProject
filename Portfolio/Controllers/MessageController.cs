@@ -46,5 +46,12 @@ namespace Portfolio.Controllers
             }
             return View(userMessage);
         }
+        public IActionResult DeleteMessage(int id)
+        {
+            var deleteMessage = _context.UserMessages.Find(id);
+            _context.UserMessages.Remove(deleteMessage);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

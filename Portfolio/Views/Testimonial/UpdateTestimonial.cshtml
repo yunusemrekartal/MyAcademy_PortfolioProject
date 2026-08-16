@@ -1,0 +1,30 @@
+﻿@model TestimonialViewModel
+@{
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Referans Güncelleme";
+}
+<form method="post">
+    <label asp-for="FirstName">Ad</label>
+    <input class="form-control" asp-for="FirstName" type="text"/>
+    <span class="text-danger" asp-validation-for="FirstName"></span>
+    <br />
+    <label asp-for="LastName">Soyad</label>
+    <input class="form-control" type="text" asp-for="LastName" />
+    <span class="text-danger" asp-validation-for="LastName"></span>
+    <br />
+    <label asp-for="SelectedRating">Reyting</label>
+    <select class="form-control" asp-for="SelectedRating" asp-items="Model.RatingList">
+        <option value="">--- Reyting Seçiniz ---</option>
+    </select>
+    <span class="text-danger" asp-validation-for="SelectedRating"></span>
+    <br />
+    <label asp-for="Title">Başlık</label>
+    <input class="form-control" type="text" asp-for="Title" />
+    <span class="text-danger" asp-validation-for="Title"></span>
+    <br />
+    <label asp-for="Comment">Açıklama</label>
+    <input class="form-control" type="text" asp-for="Comment" />
+    <span class="text-danger" asp-validation-for="Comment"></span>
+    <br />
+    <button class="btn btn-outline-dark">Güncelle</button>
+</form>

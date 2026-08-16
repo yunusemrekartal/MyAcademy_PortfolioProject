@@ -1,12 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
-namespace Portfolio.Data.Entities
+namespace Portfolio.Models
 {
-    public class Testimonial
+    public class TestimonialViewModel
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Reyting ekleyiniz.")]
-        public int Rating { get; set; }
         [Required(ErrorMessage = "Açıklama ekleyiniz.")]
         public string Comment { get; set; }
         [Required(ErrorMessage = "Ad ekleyiniz.")]
@@ -15,7 +14,9 @@ namespace Portfolio.Data.Entities
         public string LastName { get; set; }
         [Required(ErrorMessage = "Başlık ekleyiniz.")]
         public string Title { get; set; }
-
-
+        [Required(ErrorMessage = "Reyting Seçiniz.")]
+        public int? SelectedRating { get; set; }
+        
+        public List<SelectListItem>? RatingList { get; set; }
     }
 }

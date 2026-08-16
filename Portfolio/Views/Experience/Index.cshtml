@@ -1,0 +1,72 @@
+﻿@model List<Experience>
+@{
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Deneyimlerim";
+}
+@if (Model.Any())
+{
+    <table class="table table-hover table-bordered align-middle">
+        <tr class="text-center">
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th>Şirket</th>
+            <th>Başlama Yılı</th>
+            <th>Bitirme Yılı</th>
+            <th style="width:165px">İşlemler</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Title
+                </td>
+                <td>@item.Description</td>
+                <td class="text-break">@item.Company</td>
+                <td class="text-break">@item.StartYear</td>
+                <td class="text-break">@item.EndYear</td>
+                <td>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-info d-flex align-items-center justify-content-center" href="/Experience/UpdateExperience/@item.Id" style="height:40px;width:70px; padding:0"><span class="material-symbols-outlined text-[20px]">edit</span></a>
+                        <button class="btn btn-outline-danger d-flex align-items-center justify-content-center" onclick="deleteExperience(@item.Id)" style="height:40px;width:70px; padding:0; padding:0"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Experience/CreateExperience" class="btn btn-outline-dark">Yeni Deneyim Oluştur</a>
+}
+else
+{
+    <div class="alert alert-info">
+        Henüz deneyim bilgisi eklenmemiş
+    </div>
+    <a href="/Experience/CreateExperience" class="btn btn-outline-dark">Yeni Deneyim Oluştur</a>
+}
+
+<script>
+    function deleteExperience(id)
+    {
+      Swal.fire({
+      title: "Silmek istediğinize emin misiniz?",
+      text: "Bu işlem geri alınamaz",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Evet sil",
+      cancelButtonText:"İptal et"
+    }).then((result) => {
+      if (result.isConfirmed){
+        return Swal.fire({
+        title: "Silindi!",
+        text: "Deneyim başarıyla silindi.",
+        icon: "success"});
+      }
+    })
+    .then((result)=>{
+        if(result){
+            window.location.href = "/Experience/DeleteExperience/" + id;
+        }
+    });
+    }
+</script>

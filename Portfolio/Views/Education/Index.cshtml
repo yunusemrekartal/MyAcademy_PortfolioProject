@@ -1,0 +1,72 @@
+﻿@model List<Education>
+@{
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Eğitim";
+}
+@if (Model==null)
+{
+    <div class="alert alert-info">
+        Henüz eğitim bilgisi eklenmemiş
+    </div>
+    <a class="btn btn-outline-dark" href="/Education/CreateEducation">Yeni Eğitim Ekle</a>
+}
+else
+{
+    <table class="table table-bordered table-hover align-middle">
+        <tr>
+            <th>Okul</th>
+            <th>Bölüm</th>
+            <th>GANO</th>
+            <th>Başlangıç Yıl</th>
+            <th>Mezun Yıl</th>
+            <th>Açıklama</th>
+            <th>İşlemler</th>
+        </tr>
+        @foreach (var edu in Model)
+        {
+            <tr>
+                <td>@edu.SchoolName</td>
+                <td>@edu.Department</td>
+                <td>@edu.GPA</td>
+                <td>@edu.StartYear</td>
+                <td>@edu.GraduationYear</td>
+                <td>@edu.Description</td>
+                <td>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-info d-flex align-items-center justify-content-center" href="/Education/UpdateEducation/@edu.Id" style="height:40px;width:70px; padding:0"><span class="material-symbols-outlined text-[20px]">edit</span></a>
+                        <button class="btn btn-outline-danger d-flex align-items-center justify-content-center" onclick="deleteEducation(@edu.Id)" style="height:40px;width:70px; padding:0; padding:0"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+    <a class="btn btn-outline-dark" href="/Education/CreateEducation">Yeni Eğitim Ekle</a>
+}
+
+<script>
+    function deleteEducation(id)
+    {
+      Swal.fire({
+      title: "Silmek istediğinize emin misiniz?",
+      text: "Bu işlem geri alınamaz",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Evet sil",
+      cancelButtonText:"İptal et"
+    }).then((result) => {
+      if (result.isConfirmed){
+        return Swal.fire({
+        title: "Silindi!",
+        text: "Eğitim başarıyla silindi.",
+        icon: "success"});
+      }
+    })
+    .then((result)=>{
+        if(result){
+            window.location.href = "/Education/DeleteEducation/" + id;
+        }
+    });
+    }
+</script>
